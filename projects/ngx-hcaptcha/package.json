@@ -1,6 +1,24 @@
 {
   "name": "ngx-hcaptcha",
   "version": "0.0.1",
+  "description": "hCaptcha Component for Angular 6+",
+  "keywords": [
+    "hcaptcha",
+    "captcha",
+    "angular",
+    "verification"
+  ],
+  "bugs": {
+    "url": "https://github.com/leNicDev/ngx-hcaptcha/issues"
+  },
+  "contributors": [
+    "leNicDev"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leNicDev/ngx-hcaptcha.git"
+  },
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
