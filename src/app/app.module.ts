@@ -2,13 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { NgxHcaptchaModule } from 'ngx-hcaptcha';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgxHcaptchaModule.forRoot({
+      siteKey: 'YOUR_SITEKEY'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

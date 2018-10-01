@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-hcaptcha": [
+        "dist/ngx-hcaptcha"
+      ],
+      "ngx-hcaptcha/*": [
+        "dist/ngx-hcaptcha/*"
+      ]
+    }
   }
 }
