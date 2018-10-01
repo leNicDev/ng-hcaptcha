@@ -1,6 +1,6 @@
-# ngx-hcaptcha - hCaptcha Component for Angular 6+
+# ng-hcaptcha - hCaptcha Component for Angular 6+
 
-ngx-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.com).
+ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.com).
 
 ## Table of Contents
 
@@ -10,32 +10,32 @@ ngx-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.c
 
 ## Installation
 
-### Step 1 - Install the ngx-hcaptcha dependency
+### Step 1 - Install the ng-hcaptcha dependency
 NPM:
 ```shell
-npm install --save ngx-hcaptcha
+npm install --save ng-hcaptcha
 ```
 
 Yarn:
 ```
-yarn add ngx-hcaptcha
+yarn add ng-hcaptcha
 ```
 
-### Step 2 - Import  the NgxHcaptchaModule
+### Step 2 - Import  the NgHcaptchaModule
 ```ts
-import { NgxHcaptchaModule } from 'ngx-hcaptcha';
+import { NgHcaptchaModule } from 'ng-hcaptcha';
 
 @NgModule({
     imports: [
         // Option #1
         // Set the sitekey globally for every hCaptcha component
-        NgxHcaptchaModule.forRoot({
+        NgHcaptchaModule.forRoot({
             siteKey: 'YOUR_SITEKEY'
         }),
 
         // Option #2
         // This option requires you to set the [siteKey] property for every hCaptcha component
-        NgxHcaptchaModule.forRoot()
+        NgHcaptchaModule.forRoot()
     ]
 })
 ```
@@ -44,10 +44,10 @@ import { NgxHcaptchaModule } from 'ngx-hcaptcha';
 
 Template:
 ```html
-<ngx-hcaptcha (verify)="onVerify($event)"
+<ng-hcaptcha (verify)="onVerify($event)"
               (expired)="onExpired($event)"
               (error)="onError($event)">
-</ngx-hcaptcha>
+</ng-hcaptcha>
 ```
 
 TS:
@@ -68,4 +68,4 @@ onError(error: any) {
 
 ## Bugs? Ideas?
 
-If you found a bug or something you don't like, feel free to [open an issue](https://github.com/leNicDev/ngx-hcaptcha/issues/new). If you have any ideas for new features or improvements, feel free to contribute or [open an issue](https://github.com/leNicDev/ngx-hcaptcha/issues/new) :wink:
+If you found a bug or something you don't like, feel free to [open an issue](https://github.com/leNicDev/ng-hcaptcha/issues/new). If you have any ideas for new features or improvements, feel free to contribute or [open an issue](https://github.com/leNicDev/ng-hcaptcha/issues/new) :wink:

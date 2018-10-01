@@ -1,15 +1,15 @@
 import { Component, Input, ViewChild, ElementRef, OnInit, Inject, NgZone, Output, EventEmitter } from '@angular/core';
-import { CAPTCHA_CONFIG, CaptchaConfig } from './ngx-hcaptcha-config';
+import { CAPTCHA_CONFIG, CaptchaConfig } from './ng-hcaptcha-config';
 import { Observable, Subscriber } from 'rxjs';
 
 declare const window: any;
 
 @Component({
-  selector: 'ngx-hcaptcha',
+  selector: 'ng-hcaptcha',
   template: '<div #captcha class="h-captcha"></div>',
   styles: []
 })
-export class NgxHcaptchaComponent implements OnInit {
+export class NgHcaptchaComponent implements OnInit {
 
   @Input() siteKey: string;
   @Input() theme: string;

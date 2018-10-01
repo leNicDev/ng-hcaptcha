@@ -18,11 +18,11 @@
       "dom"
     ],
     "paths": {
-      "ngx-hcaptcha": [
-        "dist/ngx-hcaptcha"
+      "ng-hcaptcha": [
+        "dist/ng-hcaptcha"
       ],
-      "ngx-hcaptcha/*": [
-        "dist/ngx-hcaptcha/*"
+      "ng-hcaptcha/*": [
+        "dist/ng-hcaptcha/*"
       ]
     }
   }

@@ -1,5 +1,5 @@
 {
-  "name": "ngx-hcaptcha-app",
+  "name": "ng-hcaptcha-app",
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-lib": "ng build ngx-hcaptcha"
+    "build-lib": "ng build ng-hcaptcha"
   },
   "private": true,
   "dependencies": {

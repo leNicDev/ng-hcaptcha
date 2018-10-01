@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-hcaptcha-app": {
+    "ng-hcaptcha-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-hcaptcha-app",
+            "outputPath": "dist/ng-hcaptcha-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -54,18 +54,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-hcaptcha-app:build"
+            "browserTarget": "ng-hcaptcha-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-hcaptcha-app:build:production"
+              "browserTarget": "ng-hcaptcha-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-hcaptcha-app:build"
+            "browserTarget": "ng-hcaptcha-app:build"
           }
         },
         "test": {
@@ -99,7 +99,7 @@
         }
       }
     },
-    "ngx-hcaptcha-app-e2e": {
+    "ng-hcaptcha-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -107,11 +107,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-hcaptcha-app:serve"
+            "devServerTarget": "ng-hcaptcha-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-hcaptcha-app:serve:production"
+              "devServerTarget": "ng-hcaptcha-app:serve:production"
             }
           }
         },
@@ -126,33 +126,33 @@
         }
       }
     },
-    "ngx-hcaptcha": {
-      "root": "projects/ngx-hcaptcha",
-      "sourceRoot": "projects/ngx-hcaptcha/src",
+    "ng-hcaptcha": {
+      "root": "projects/ng-hcaptcha",
+      "sourceRoot": "projects/ng-hcaptcha/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ngx-hcaptcha/tsconfig.lib.json",
-            "project": "projects/ngx-hcaptcha/ng-package.json"
+            "tsConfig": "projects/ng-hcaptcha/tsconfig.lib.json",
+            "project": "projects/ng-hcaptcha/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-hcaptcha/src/test.ts",
-            "tsConfig": "projects/ngx-hcaptcha/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-hcaptcha/karma.conf.js"
+            "main": "projects/ng-hcaptcha/src/test.ts",
+            "tsConfig": "projects/ng-hcaptcha/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-hcaptcha/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-hcaptcha/tsconfig.lib.json",
-              "projects/ngx-hcaptcha/tsconfig.spec.json"
+              "projects/ng-hcaptcha/tsconfig.lib.json",
+              "projects/ng-hcaptcha/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -162,5 +162,5 @@
       }
     }
   },
-  "defaultProject": "ngx-hcaptcha-app"
+  "defaultProject": "ng-hcaptcha-app"
 }

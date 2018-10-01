@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ngx-hcaptcha-app'`, () => {
+  it(`should have as title 'ng-hcaptcha-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ngx-hcaptcha-app');
+    expect(app.title).toEqual('ng-hcaptcha-app');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to ngx-hcaptcha-app!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to ng-hcaptcha-app!');
   });
 });

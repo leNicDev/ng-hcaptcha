@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxHcaptchaComponent } from './ngx-hcaptcha.component';
+import { NgHcaptchaComponent } from './ng-hcaptcha.component';
 
-describe('NgxHcaptchaComponent', () => {
-  let component: NgxHcaptchaComponent;
-  let fixture: ComponentFixture<NgxHcaptchaComponent>;
+describe('NgHcaptchaComponent', () => {
+  let component: NgHcaptchaComponent;
+  let fixture: ComponentFixture<NgHcaptchaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxHcaptchaComponent ]
+      declarations: [ NgHcaptchaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgxHcaptchaComponent);
+    fixture = TestBed.createComponent(NgHcaptchaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

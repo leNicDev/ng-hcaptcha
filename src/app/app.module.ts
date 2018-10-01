@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NgxHcaptchaModule } from 'ngx-hcaptcha';
+import { NgHcaptchaModule } from 'ng-hcaptcha'; 
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { NgxHcaptchaModule } from 'ngx-hcaptcha';
   ],
   imports: [
     BrowserModule,
-    NgxHcaptchaModule.forRoot({
+    NgHcaptchaModule.forRoot({
       siteKey: 'YOUR_SITEKEY'
     })
   ],

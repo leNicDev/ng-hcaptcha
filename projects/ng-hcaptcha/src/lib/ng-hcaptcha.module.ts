@@ -1,20 +1,20 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { NgxHcaptchaComponent } from './ngx-hcaptcha.component';
-import { CAPTCHA_CONFIG, CaptchaConfig } from './ngx-hcaptcha-config';
+import { NgHcaptchaComponent } from './ng-hcaptcha.component';
+import { CAPTCHA_CONFIG, CaptchaConfig } from './ng-hcaptcha-config';
 
 @NgModule({
   imports: [
   ],
-  declarations: [NgxHcaptchaComponent],
-  exports: [NgxHcaptchaComponent]
+  declarations: [NgHcaptchaComponent],
+  exports: [NgHcaptchaComponent]
 })
-export class NgxHcaptchaModule {
+export class NgHcaptchaModule {
   
   static forRoot(config?: CaptchaConfig): ModuleWithProviders {
     const providers = config ? [{ provide: CAPTCHA_CONFIG, useValue: config }] : [];
 
     return {
-      ngModule: NgxHcaptchaModule,
+      ngModule: NgHcaptchaModule,
       providers
     };
   }
