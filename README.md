@@ -7,6 +7,7 @@ ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.co
 - [Installation](#installation)
 - [Usage](#usage)
 - [Bugs? Ideas?](#bugs-ideas)
+- [Support me](#support-me)
 
 ## Installation
 
@@ -69,3 +70,8 @@ onError(error: any) {
 ## Bugs? Ideas?
 
 If you found a bug or something you don't like, feel free to [open an issue](https://github.com/leNicDev/ng-hcaptcha/issues/new). If you have any ideas for new features or improvements, feel free to contribute or [open an issue](https://github.com/leNicDev/ng-hcaptcha/issues/new) :wink:
+
+## Support me
+
+If you would like to support me for free, just create your hCaptcha account using my referral link :relaxed:
+[https://hCaptcha.com/?r=4afcb2d42338](https://hCaptcha.com/?r=4afcb2d42338)
