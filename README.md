@@ -71,6 +71,9 @@ onError(error: any) {
 
 If you found a bug or something you don't like, feel free to [open an issue](https://github.com/leNicDev/ng-hcaptcha/issues/new). If you have any ideas for new features or improvements, feel free to contribute or [open an issue](https://github.com/leNicDev/ng-hcaptcha/issues/new) :wink:
 
+## Contribute
+You can reach out to us on [telegram](https://t.me/hcaptchachat) 
+
 ## Support me
 
 If you would like to support me for free, just create your hCaptcha account using my referral link :relaxed:
