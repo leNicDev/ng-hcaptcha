@@ -1,6 +1,8 @@
 # ng-hcaptcha - hCaptcha Component for Angular 6+
 
-ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.com).
+ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.com). 
+
+This component is contributed and maintained by the hCaptcha community. You can find the upstream repo [here](https://github.com/leNicDev/ng-hcaptcha).
 
 ## Table of Contents
 
