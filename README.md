@@ -46,10 +46,17 @@ import { NgHcaptchaModule } from 'ng-hcaptcha';
 
 Template:
 ```html
+<!-- Regular usage -->
 <ng-hcaptcha (verify)="onVerify($event)"
               (expired)="onExpired($event)"
               (error)="onError($event)">
 </ng-hcaptcha>
+
+<!-- Usage in forms -->
+<!-- The value of the form control will be the verification token -->
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+    <ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
+</form>
 ```
 
 TS:
