@@ -13,13 +13,11 @@ ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.co
 
 ### Step 1 - Install the ng-hcaptcha dependency
 
-NPM:
 ```shell
+# NPM
 npm install --save ng-hcaptcha
-```
 
-<small>Yarn:</small>
-```
+# Yarn
 yarn add ng-hcaptcha
 ```
 
