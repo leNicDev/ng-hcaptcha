@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { NgHcaptchaModule } from 'ng-hcaptcha'; 
+import { NgHcaptchaModule } from 'ng-hcaptcha';
+import { environment } from '../environments/environment';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,8 +12,10 @@ import { NgHcaptchaModule } from 'ng-hcaptcha';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgHcaptchaModule.forRoot({
-      siteKey: 'YOUR_SITEKEY'
+      siteKey: environment.siteKey
     })
   ],
   providers: [],

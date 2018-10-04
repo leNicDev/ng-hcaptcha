@@ -9,7 +9,7 @@ import { CAPTCHA_CONFIG, CaptchaConfig } from './ng-hcaptcha-config';
   exports: [NgHcaptchaComponent]
 })
 export class NgHcaptchaModule {
-  
+
   static forRoot(config?: CaptchaConfig): ModuleWithProviders {
     const providers = config ? [{ provide: CAPTCHA_CONFIG, useValue: config }] : [];
 
