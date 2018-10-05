@@ -1,0 +1,28 @@
+sudo: false
+dist: trusty
+language: node_js
+
+cache:
+  directories:
+    - node_modules
+
+addons:
+  chrome: stable
+
+nodejs:
+  - "8"
+
+matrix:
+  fast_finish: true
+
+before_install:
+  - npm install -g npm@6
+  - npm cache verify
+  - npm prune
+  - npm update
+
+install:
+  - npm install
+
+script:
+  - npm run test
