@@ -4917,6 +4917,13 @@ neo-async@^2.5.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
   integrity sha512-vdqTKI9GBIYcAEbFAcpKPErKINfPF5zIuz3/niBfq8WUZjpT2tytLlFVrBgWdOtqI4uaA/Rb6No0hux39XXDuw==
 
+ng-hcaptcha@^0.1.0-beta.0:
+  version "0.1.0-beta.0"
+  resolved "https://registry.yarnpkg.com/ng-hcaptcha/-/ng-hcaptcha-0.1.0-beta.0.tgz#e7c3122919ca5c1bec40fa1b36095fda21a94301"
+  integrity sha512-ThOPjWRazpav+XDErfMv9Mheg/nQybo6lZ9mEq3KzPJM+f0Agpu+ZI689KLPUJQdpHIODDvUPL9CcwTKXmbLGA==
+  dependencies:
+    tslib "^1.9.0"
+
 ng-packagr@^4.1.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-4.2.0.tgz#9e2babac0402f761c64908996dae99e54a07fe3e"

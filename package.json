@@ -6,8 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "test:ci": "ng test --watch=false --progress=false --browsers=ChromeHeadlessCI",
-    "e2e:ci": "ng e2e --protractor-config=./e2e/protractor-ci.conf.js",
+    "test:ci": "ng test --browsers=ChromeHeadlessCI --watch=false --progress=false ng-hcaptcha",
+    "e2e:ci": "ng e2e --protractor-config=./e2e/protractor-ci.conf.js ng-hcaptcha",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-lib": "ng build ng-hcaptcha"

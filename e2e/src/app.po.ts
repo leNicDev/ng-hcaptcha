@@ -5,7 +5,7 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('hc-root h1')).getText();
+  getCaptchaContainer() {
+    return element(by.css('div.hcaptcha'));
   }
 }
