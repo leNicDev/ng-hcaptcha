@@ -21,4 +21,5 @@ install:
 
 script:
   - npm run test:ci
+  - npm run build-lib
   - npm run e2e:ci
