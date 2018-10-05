@@ -1,28 +1,24 @@
-sudo: false
 dist: trusty
+sudo: false
+
 language: node_js
+nodejs:
+  - "8"
 
 cache:
   directories:
     - node_modules
 
 addons:
-  chrome: stable
-
-nodejs:
-  - "8"
-
-matrix:
-  fast_finish: true
-
-before_install:
-  - npm install -g npm@6
-  - npm cache verify
-  - npm prune
-  - npm update
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 
 install:
   - npm install
 
 script:
-  - npm run test
+  - npm run test:ci
+  - npm run e2e:ci
