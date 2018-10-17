@@ -1,0 +1,25 @@
+dist: trusty
+sudo: false
+
+language: node_js
+nodejs:
+  - "8"
+
+cache:
+  directories:
+    - node_modules
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+install:
+  - npm install
+
+script:
+  - npm run test:ci
+  - npm run build-lib
+  - npm run e2e:ci

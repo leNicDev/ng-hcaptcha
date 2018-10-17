@@ -1,8 +1,33 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h1>ng-hcaptcha Demo</h1>
-</div>
+<header>
+  <div class="logo">
+    <span class="logo-prefix">ng-</span>
+    <img src="https://hcaptcha.com/static/img/site/horizontal-logo.svg">
+    <span class="logo-suffix">Demo</span>
+  </div>
 
-<div class="hcaptcha-wrapper">
-  <ng-hcaptcha></ng-hcaptcha>
-</div>
+  <div class="app-version">
+    <span>v{{ appVersion }}</span>
+  </div>
+</header>
+
+<main>
+  <form class="demo-form" [formGroup]="signUpForm" (submit)="onSubmit()">
+    <div class="form-control">
+      <input type="email" placeholder="E-Mail" formControlName="email" [class.error]="!signUpForm.get('email').valid" required>
+    </div>
+
+    <div class="form-control">
+      <input type="password" placeholder="Password" formControlName="password" [class.error]="!signUpForm.get('password').valid" required>
+    </div>
+    
+    <div class="form-control">
+      <input type="password" placeholder="Confirm password" formControlName="confirmPassword" [class.error]="!signUpForm.get('confirmPassword').valid" required>
+    </div>
+
+    <div class="flex justify-content-between">
+      <ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
+
+      <button type="submit" class="btn primary signup" [disabled]="!signUpForm.valid">Sign up</button>
+    </div>
+  </form>
+</main>

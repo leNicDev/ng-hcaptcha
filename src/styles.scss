@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700');
+
+$border-radius: 5px;
+
+html * {
+    font-family: 'IBM Plex Sans', 'Roboto', 'Arial', sans-serif;
+    outline: none;
+}
+
+.form-control {
+    width: 100%;
+    margin-bottom: 10px;
+
+    input {
+        box-sizing: border-box;
+        width: 100%;
+    }
+}
+
+input[type=text], input[type=email], input[type=password] {
+    border: solid 1px #c4c4c4;
+    border-radius: $border-radius;
+    padding: 10px 15px;
+    box-shadow: 2px 2px rgba(#c4c4c4, 0.3);
+
+    &:focus {
+        border: solid 2px #00cbbe;
+        box-shadow: 2px 2px rgba(#00cbbe, 0.3);
+    }
+
+    &.ng-invalid:not(form):not(.ng-untouched) {
+        border-color: #fc6964;
+
+        &:focus {
+            box-shadow: 2px 2px rgba(#fc6964, 0.3);
+        }
+    }
+}
+
+.btn {
+    border: none;
+    color: white;
+    padding: 0 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: $border-radius;
+}
+
+.btn:disabled {
+    background-color: linear-gradient(to bottom, #dfdfdf, #c4c4c4);
+    color: #585858;
+    cursor: not-allowed;
+}
+
+.btn.primary:not(:disabled) {
+    background: linear-gradient(to bottom, #00cbbe, #00c2bf);
+
+    &:hover {
+        background: linear-gradient(to bottom, #00e7d8, #00dad6);
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.flex.justify-content-between {
+    justify-content: space-between;
+}

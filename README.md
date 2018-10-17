@@ -1,3 +1,8 @@
+[![Build status](https://api.travis-ci.org/leNicDev/ng-hcaptcha.svg?branch=master)](https://travis-ci.org/leNicDev/ng-hcaptcha)&nbsp;
+[![GitHub license](https://img.shields.io/github/license/leNicDev/ng-hcaptcha.svg)](https://github.com/leNicDev/ng-hcaptcha/blob/master/LICENSE)&nbsp;
+[![GitHub issues](https://img.shields.io/github/issues/leNicDev/ng-hcaptcha.svg)](https://GitHub.com/leNicDev/ng-hcaptcha/issues/)&nbsp;
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/leNicDev/ng-hcaptcha.svg)](https://GitHub.com/leNicDev/ng-hcaptcha/pull/)
+
 # ng-hcaptcha - hCaptcha Component for Angular 6+
 
 ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.com). 
@@ -14,15 +19,16 @@ This component is contributed and maintained by the hCaptcha community. You can 
 ## Installation
 
 ### Step 1 - Install the ng-hcaptcha dependency
-NPM:
-```shell
-npm install --save ng-hcaptcha
-```
 
-Yarn:
-```
+```shell
+# NPM
+npm install --save ng-hcaptcha
+
+# Yarn
 yarn add ng-hcaptcha
 ```
+
+> You can use the tag 'next' to get the latest beta version.
 
 ### Step 2 - Import  the NgHcaptchaModule
 ```ts
@@ -47,10 +53,17 @@ import { NgHcaptchaModule } from 'ng-hcaptcha';
 
 Template:
 ```html
+<!-- Regular usage -->
 <ng-hcaptcha (verify)="onVerify($event)"
               (expired)="onExpired($event)"
               (error)="onError($event)">
 </ng-hcaptcha>
+
+<!-- Usage in forms -->
+<!-- The value of the form control will be the verification token -->
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+    <ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
+</form>
 ```
 
 TS:

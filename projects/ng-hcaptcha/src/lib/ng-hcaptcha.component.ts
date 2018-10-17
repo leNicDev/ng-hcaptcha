@@ -1,4 +1,5 @@
-import { Component, Input, ViewChild, ElementRef, OnInit, Inject, NgZone, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, OnInit, Inject, NgZone, Output, EventEmitter, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CAPTCHA_CONFIG, CaptchaConfig } from './ng-hcaptcha-config';
 import { Observable, Subscriber } from 'rxjs';
 
@@ -7,9 +8,16 @@ declare const window: any;
 @Component({
   selector: 'ng-hcaptcha',
   template: '<div #captcha class="h-captcha"></div>',
-  styles: []
+  styles: [],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NgHcaptchaComponent),
+      multi: true
+    }
+  ]
 })
-export class NgHcaptchaComponent implements OnInit {
+export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
 
   @Input() siteKey: string;
   @Input() theme: string;
@@ -22,12 +30,20 @@ export class NgHcaptchaComponent implements OnInit {
   @Output() expired: EventEmitter<any> = new EventEmitter<any>();
   @Output() error: EventEmitter<any> = new EventEmitter<any>();
 
+  private _value: string;
+  private widgetId: string;
+
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
 
   constructor(
     @Inject(CAPTCHA_CONFIG) private config: CaptchaConfig,
     private zone: NgZone
   ) {}
 
+
+  // Initialization
 
   ngOnInit() {
     // Load the hCaptcha script
@@ -39,13 +55,16 @@ export class NgHcaptchaComponent implements OnInit {
           theme: this.theme,
           size: this.size,
           tabindex: this.tabIndex,
-          callback: (res) => { this.zone.run(() => this.onVerify(res)) },
-          'expired-callback': (res) => { this.zone.run(() => this.onExpired(res)) },
-          'error-callback': (err) => { this.zone.run(() => this.onError(err)) }
+          callback: (res) => { this.zone.run(() => this.onVerify(res)); },
+          'expired-callback': (res) => { this.zone.run(() => this.onExpired(res)); },
+          'error-callback': (err) => { this.zone.run(() => this.onError(err)); }
         };
 
         // Render hCaptcha using the defined options
         window.hcaptcha.render(this.captcha.nativeElement, options);
+
+        // Get widget ID
+        this.widgetId = this.findWidgetId();
       },
       (error) => {
         console.error('Failed to load hCaptcha script', error);
@@ -54,11 +73,47 @@ export class NgHcaptchaComponent implements OnInit {
   }
 
 
+  // ControlValueAccessor implementation
+
+  writeValue(value: string) {
+    // Needs to be implemented to make the FormGroup's reset function work
+    this.value = value;
+
+    // Reset hCaptcha.
+    // We need to check whether window.hcaptcha is defined because
+    // writeValue(value: any) can be called before hCaptcha has been intialized.
+    if (!this.value && window.hcaptcha) {
+      window.hcaptcha.reset(this.widgetId);
+    }
+  }
+
+  registerOnChange(fn: any) {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any) {
+    this.onTouched = fn;
+  }
+
+  get value() {
+    return this._value;
+  }
+
+  set value(value: string) {
+    this._value = value;
+    this.onChange(value);
+    this.onTouched();
+  }
+
+
+  // Internal functions
+
   /**
    * Is called when the verification was successful
    * @param response The verification token
    */
   private onVerify(response: string) {
+    this.value = response;
     this.verify.emit(response);
   }
 
@@ -100,9 +155,25 @@ export class NgHcaptchaComponent implements OnInit {
       script.onload = () => {
         observer.next();
         observer.complete();
-      }
+      };
       document.head.appendChild(script);
     });
+  }
+
+  /**
+   * Find the widget ID of the hCaptcha container.
+   */
+  private findWidgetId(): string {
+    const children = this.captcha.nativeElement.children;
+
+    for (let i = 0; i < children.length; i++) {
+      // Found correct children when the hcaptchaWidgetId dataset property is set
+      if (children[i] && children[i].dataset && children[i].dataset.hcaptchaWidgetId) {
+        return children[i].dataset.hcaptchaWidgetId;
+      }
+    }
+
+    return null;
   }
 
 }
