@@ -1,7 +1,7 @@
-[![Build status](https://api.travis-ci.org/leNicDev/ng-hcaptcha.svg?branch=master)](https://travis-ci.org/leNicDev/ng-hcaptcha)&nbsp;
-[![GitHub license](https://img.shields.io/github/license/leNicDev/ng-hcaptcha.svg)](https://github.com/leNicDev/ng-hcaptcha/blob/master/LICENSE)&nbsp;
-[![GitHub issues](https://img.shields.io/github/issues/leNicDev/ng-hcaptcha.svg)](https://GitHub.com/leNicDev/ng-hcaptcha/issues/)&nbsp;
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/leNicDev/ng-hcaptcha.svg)](https://GitHub.com/leNicDev/ng-hcaptcha/pull/)
+[![Build status](https://api.travis-ci.org/hCaptcha/ng-hcaptcha.svg?branch=master)](https://travis-ci.org/leNicDev/ng-hcaptcha)&nbsp;
+[![GitHub license](https://img.shields.io/github/license/hCaptcha/ng-hcaptcha.svg)](https://github.com/hCaptcha/ng-hcaptcha/blob/master/LICENSE)&nbsp;
+[![GitHub issues](https://img.shields.io/github/issues/hCaptchhCaptcha/ng-hcaptcha.svg)](https://GitHub.com/hCaptcha/ng-hcaptcha/issues/)&nbsp;
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/hCaptcha/ng-hcaptcha.svg)](https://GitHub.com/hCaptcha/ng-hcaptcha/pull/)
 
 # ng-hcaptcha - hCaptcha Component for Angular 6+
 
@@ -30,7 +30,7 @@ yarn add ng-hcaptcha
 
 > You can use the tag 'next' to get the latest beta version.
 
-### Step 2 - Import  the NgHcaptchaModule
+### Step 2 - Import the NgHcaptchaModule
 ```ts
 import { NgHcaptchaModule } from 'ng-hcaptcha';
 
@@ -89,7 +89,7 @@ If you found a bug or something you don't like, feel free to [open an issue](htt
 ## Contribute
 You can reach out to us on [telegram](https://t.me/hcaptchachat) 
 
-## Support me
+## Support me (note from the original author)
 
 If you would like to support me for free, just create your hCaptcha account using my referral link :relaxed:
 [https://hCaptcha.com/?r=4afcb2d42338](https://hCaptcha.com/?r=4afcb2d42338)
