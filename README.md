@@ -5,7 +5,9 @@
 
 # ng-hcaptcha - hCaptcha Component for Angular 6+
 
-ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.com).
+ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.com). 
+
+This component is contributed and maintained by the hCaptcha community. You can find the upstream repo [here](https://github.com/leNicDev/ng-hcaptcha).
 
 ## Table of Contents
 
@@ -83,6 +85,9 @@ onError(error: any) {
 ## Bugs? Ideas?
 
 If you found a bug or something you don't like, feel free to [open an issue](https://github.com/leNicDev/ng-hcaptcha/issues/new). If you have any ideas for new features or improvements, feel free to contribute or [open an issue](https://github.com/leNicDev/ng-hcaptcha/issues/new) :wink:
+
+## Contribute
+You can reach out to us on [telegram](https://t.me/hcaptchachat) 
 
 ## Support me
 
