@@ -11,11 +11,14 @@ import { CAPTCHA_CONFIG, CaptchaConfig } from './ng-hcaptcha-config';
 export class NgHcaptchaModule {
 
   static forRoot(config?: CaptchaConfig): ModuleWithProviders {
-    const providers = config ? [{ provide: CAPTCHA_CONFIG, useValue: config }] : [];
-
     return {
       ngModule: NgHcaptchaModule,
-      providers
+      providers: [
+        {
+          provide: CAPTCHA_CONFIG,
+          useValue: config || []
+        }
+      ]
     };
   }
 
