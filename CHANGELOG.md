@@ -1,3 +1,12 @@
+# 0.1.0-beta.3 (2018-12-21)
+
+## Fixes
+- Fix error with function calls inside the forRoot function
+
+# 0.1.0-beta.1 (2018-12-21)
+
+Add support vor Angular 7.x
+
 # 0.1.0-beta.0 (2018-10-04)
 
 ## Features
