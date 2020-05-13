@@ -24,7 +24,7 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
   @Input() size: string;
   @Input() tabIndex: number;
 
-  @ViewChild('captcha') captcha: ElementRef;
+  @ViewChild('captcha', { static: true }) captcha: ElementRef;
 
   @Output() verify: EventEmitter<string> = new EventEmitter<string>();
   @Output() expired: EventEmitter<any> = new EventEmitter<any>();
