@@ -1,6 +1,6 @@
 {
   "name": "ng-hcaptcha",
-  "version": "0.1.0-beta.3",
+  "version": "1.0.0-beta.0",
   "description": "hCaptcha Component for Angular 7+",
   "keywords": [
     "hcaptcha",
