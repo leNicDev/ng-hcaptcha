@@ -62,6 +62,12 @@ Template:
 <form [formGroup]="formGroup" (submit)="onSubmit()">
     <ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
 </form>
+
+<!-- Invisible captcha -->
+<button ngHcaptchaInvisibleButton
+        (verify)="onVerify($event)"
+        (expired)="onExpired($event)"
+        (error)="onError($event)">Click me</button>
 ```
 
 TS:
