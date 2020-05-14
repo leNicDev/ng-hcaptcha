@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   version: require('../../package.json').version,
-  siteKey: '6de09d9c-8f26-4501-8141-49f4fa644d38'
+  siteKey: '10000000-ffff-ffff-ffff-000000000001'
 };
 
 /*

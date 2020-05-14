@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild, ElementRef, OnInit, Inject, NgZone, Output, EventEmitter, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CAPTCHA_CONFIG, CaptchaConfig } from './ng-hcaptcha-config';
-import { Observable, Subscriber } from 'rxjs';
+import { loadHCaptcha } from './hcaptcha-utils';
 
 declare const window: any;
 
@@ -47,7 +47,7 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     // Load the hCaptcha script
-    this.loadHcaptcha().subscribe(
+    loadHCaptcha().subscribe(
       () => {
         // Configure hCaptcha
         const options = {
@@ -131,33 +131,6 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
    */
   private onError(error: any) {
     this.error.emit(error);
-  }
-
-  /**
-   * Load the hCaptcha script by appending a script element to the head element.
-   * The script won't be loaded again if it has already been loaded.
-   * Async and defer are set to prevent blocking the renderer while loading hCaptcha.
-   */
-  private loadHcaptcha(): Observable<void> {
-    return new Observable<void>((observer: Subscriber<void>) => {
-      // The hCaptcha script has already been loaded
-      if (typeof window.hcaptcha !== 'undefined') {
-        observer.next();
-        observer.complete();
-        return;
-      }
-
-      const script = document.createElement('script');
-      script.src = 'https://hcaptcha.com/1/api.js?render=explicit';
-      script.async = true;
-      script.defer = true;
-      script.onerror = (e) => observer.error(e);
-      script.onload = () => {
-        observer.next();
-        observer.complete();
-      };
-      document.head.appendChild(script);
-    });
   }
 
   /**

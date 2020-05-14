@@ -1,0 +1,8 @@
+<div class="flex justify-content-center">
+  <button ngHcaptchaInvisibleButton
+          class="btn primary"
+          (click)="onClick($event)"
+          (verify)="onVerify($event)"
+          (error)="onError($event)"
+          (expired)="onExpired($event)">Click me (see console)</button>
+</div>

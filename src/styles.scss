@@ -64,6 +64,10 @@ input[type=text], input[type=email], input[type=password] {
     display: flex;
 }
 
+.flex.justify-content-center {
+  justify-content: center;
+}
+
 .flex.justify-content-between {
     justify-content: space-between;
 }

@@ -1,7 +1,7 @@
 <header>
   <div class="logo">
     <span class="logo-prefix">ng-</span>
-    <img src="https://hcaptcha.com/static/img/site/horizontal-logo.svg">
+    <img src="https://assets.website-files.com/5c73e7ea3f8bb2a85d2781db/5c73e7ea3f8bb23b4c278261_hcaptcha-logo-landscape.svg">
     <span class="logo-suffix">Demo</span>
   </div>
 
@@ -11,23 +11,5 @@
 </header>
 
 <main>
-  <form class="demo-form" [formGroup]="signUpForm" (submit)="onSubmit()">
-    <div class="form-control">
-      <input type="email" placeholder="E-Mail" formControlName="email" [class.error]="!signUpForm.get('email').valid" required>
-    </div>
-
-    <div class="form-control">
-      <input type="password" placeholder="Password" formControlName="password" [class.error]="!signUpForm.get('password').valid" required>
-    </div>
-    
-    <div class="form-control">
-      <input type="password" placeholder="Confirm password" formControlName="confirmPassword" [class.error]="!signUpForm.get('confirmPassword').valid" required>
-    </div>
-
-    <div class="flex justify-content-between">
-      <ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
-
-      <button type="submit" class="btn primary signup" [disabled]="!signUpForm.valid">Sign up</button>
-    </div>
-  </form>
+  <router-outlet></router-outlet>
 </main>

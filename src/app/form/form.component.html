@@ -1,0 +1,19 @@
+<form class="demo-form" [formGroup]="signUpForm" (submit)="onSubmit()">
+  <div class="form-control">
+    <input type="email" placeholder="E-Mail" formControlName="email" [class.error]="!signUpForm.get('email').valid" required>
+  </div>
+
+  <div class="form-control">
+    <input type="password" placeholder="Password" formControlName="password" [class.error]="!signUpForm.get('password').valid" required>
+  </div>
+
+  <div class="form-control">
+    <input type="password" placeholder="Confirm password" formControlName="confirmPassword" [class.error]="!signUpForm.get('confirmPassword').valid" required>
+  </div>
+
+  <div class="flex justify-content-between">
+    <ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
+
+    <button type="submit" class="btn primary signup" [disabled]="!signUpForm.valid">Sign up</button>
+  </div>
+</form>
