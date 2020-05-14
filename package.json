@@ -10,7 +10,7 @@
     "e2e:ci": "ng e2e --protractor-config=./e2e/protractor-ci.conf.js ng-hcaptcha",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-lib": "ng build ng-hcaptcha"
+    "build:lib": "ng build ng-hcaptcha"
   },
   "private": true,
   "dependencies": {
