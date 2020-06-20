@@ -37,7 +37,8 @@ import { NgHcaptchaModule } from 'ng-hcaptcha';
         // Option #1
         // Set the sitekey globally for every hCaptcha component
         NgHcaptchaModule.forRoot({
-            siteKey: 'YOUR_SITEKEY'
+            siteKey: 'YOUR_SITEKEY',
+            languageCode: 'de' // optional, will default to browser language
         }),
 
         // Option #2
@@ -85,6 +86,13 @@ onError(error: any) {
     // An error occured during the verification process.
 }
 ```
+
+## Properties
+The properties below exist for all captcha components.
+
+`siteKey` Allows you to set the site key per captcha instance.
+
+`languageCode` Allows you to force a specific language. See https://docs.hcaptcha.com/languages
 
 ## Bugs? Ideas?
 
