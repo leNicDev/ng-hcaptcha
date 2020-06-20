@@ -10,6 +10,7 @@ declare const window: any;
 export class NgHcaptchaInvisibleButtonDirective implements OnInit {
 
   @Input() siteKey: string;
+  @Input() languageCode: string;
 
   @Output() verify: EventEmitter<string> = new EventEmitter<string>();
   @Output() expired: EventEmitter<any> = new EventEmitter<any>();
@@ -23,8 +24,13 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit {
               private zone: NgZone) { }
 
   ngOnInit() {
+    // Use language code from module config when input parameter is not set
+    if (!this.languageCode) {
+      this.languageCode = this.config.languageCode;
+    }
+
     // Load the hCaptcha script
-    loadHCaptcha().subscribe(
+    loadHCaptcha(this.languageCode).subscribe(
       () => {
         // Configure hCaptcha
         const options = {

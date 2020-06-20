@@ -23,6 +23,7 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
   @Input() theme: string;
   @Input() size: string;
   @Input() tabIndex: number;
+  @Input() languageCode: string;
 
   @ViewChild('captcha', { static: true }) captcha: ElementRef;
 
@@ -46,8 +47,13 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
   // Initialization
 
   ngOnInit() {
+    // Use language code from module config when input parameter is not set
+    if (!this.languageCode) {
+      this.languageCode = this.config.languageCode;
+    }
+
     // Load the hCaptcha script
-    loadHCaptcha().subscribe(
+    loadHCaptcha(this.languageCode).subscribe(
       () => {
         // Configure hCaptcha
         const options = {
