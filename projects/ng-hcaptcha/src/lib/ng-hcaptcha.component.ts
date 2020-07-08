@@ -1,7 +1,20 @@
-import { Component, Input, ViewChild, ElementRef, OnInit, Inject, NgZone, Output, EventEmitter, forwardRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  ViewChild,
+  ElementRef,
+  OnInit,
+  Inject,
+  NgZone,
+  Output,
+  EventEmitter,
+  forwardRef,
+  PLATFORM_ID
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CAPTCHA_CONFIG, CaptchaConfig } from './ng-hcaptcha-config';
 import { loadHCaptcha } from './hcaptcha-utils';
+import { isPlatformServer } from '@angular/common';
 
 declare const window: any;
 
@@ -40,7 +53,8 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
 
   constructor(
     @Inject(CAPTCHA_CONFIG) private config: CaptchaConfig,
-    private zone: NgZone
+    private zone: NgZone,
+    @Inject(PLATFORM_ID) private platformId
   ) {}
 
 
@@ -50,6 +64,11 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
     // Use language code from module config when input parameter is not set
     if (!this.languageCode) {
       this.languageCode = this.config.languageCode;
+    }
+
+    // Do not load hCaptcha if platform is server
+    if (isPlatformServer(this.platformId)) {
+      return;
     }
 
     // Load the hCaptcha script

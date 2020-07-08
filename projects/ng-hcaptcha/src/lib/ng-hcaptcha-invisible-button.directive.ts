@@ -1,6 +1,7 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Inject, Input, NgZone, OnInit, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Inject, Input, NgZone, OnInit, Output, PLATFORM_ID } from '@angular/core';
 import { CAPTCHA_CONFIG, CaptchaConfig } from './ng-hcaptcha-config';
 import { loadHCaptcha } from './hcaptcha-utils';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 declare const window: any;
 
@@ -21,12 +22,18 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit {
 
   constructor(private elRef: ElementRef,
               @Inject(CAPTCHA_CONFIG) private config: CaptchaConfig,
-              private zone: NgZone) { }
+              private zone: NgZone,
+              @Inject(PLATFORM_ID) private platformId) { }
 
   ngOnInit() {
     // Use language code from module config when input parameter is not set
     if (!this.languageCode) {
       this.languageCode = this.config.languageCode;
+    }
+
+    // Do not load hCaptcha if platform is server
+    if (isPlatformServer(this.platformId)) {
+      return;
     }
 
     // Load the hCaptcha script
@@ -57,7 +64,12 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit {
     event.preventDefault();
     event.cancelBuble = true;
     event.stopImmediatePropagation();
-    window.hcaptcha.execute();
+
+    // Only execute hCaptcha if platform is browser
+    if (isPlatformBrowser(this.platformId)) {
+      window.hcaptcha.execute();
+    }
+
     return false;
   }
 
