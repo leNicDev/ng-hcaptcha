@@ -62,8 +62,8 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit {
     this.lastClickEvent = event;
     event.stopPropagation();
     event.preventDefault();
-    event.cancelBuble = true;
-    event.stopImmediatePropagation();
+    event.cancelBubble = true;
+    //event.stopImmediatePropagation();
 
     // Only execute hCaptcha if platform is browser
     if (isPlatformBrowser(this.platformId)) {
