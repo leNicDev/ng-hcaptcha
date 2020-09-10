@@ -12,10 +12,6 @@ export class InvisibleComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClick(event) {
-    console.log('onClick', event);
-  }
-
   onVerify(response) {
     console.log('Invisible verified', response);
   }

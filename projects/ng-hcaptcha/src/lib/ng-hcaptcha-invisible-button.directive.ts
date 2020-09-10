@@ -56,7 +56,7 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.captcha$.unsubscribe();
   }
 
@@ -70,7 +70,7 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
     event.stopPropagation();
     event.preventDefault();
     event.cancelBubble = true;
-    //event.stopImmediatePropagation();
+    // event.stopImmediatePropagation();
 
     // Only execute hCaptcha if platform is browser
     if (isPlatformBrowser(this.platformId)) {
