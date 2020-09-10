@@ -9,12 +9,14 @@ import {
   Output,
   EventEmitter,
   forwardRef,
-  PLATFORM_ID
+  PLATFORM_ID,
+  OnDestroy
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { isPlatformServer } from '@angular/common';
+import { Subscription } from 'rxjs';
 import { CAPTCHA_CONFIG, CaptchaConfig } from './ng-hcaptcha-config';
 import { loadHCaptcha } from './hcaptcha-utils';
-import { isPlatformServer } from '@angular/common';
 
 declare const window: any;
 
@@ -30,7 +32,7 @@ declare const window: any;
     }
   ]
 })
-export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
+export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAccessor {
 
   @Input() siteKey: string;
   @Input() theme: string;
@@ -46,6 +48,7 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
 
   private _value: string;
   private widgetId: string;
+  private captcha$: Subscription;
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -72,7 +75,7 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
     }
 
     // Load the hCaptcha script
-    loadHCaptcha(this.languageCode).subscribe(
+    this.captcha$ = loadHCaptcha(this.languageCode).subscribe(
       () => {
         // Configure hCaptcha
         const options = {
@@ -86,10 +89,8 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
         };
 
         // Render hCaptcha using the defined options
-        window.hcaptcha.render(this.captcha.nativeElement, options);
+        this.widgetId = window.hcaptcha.render(this.captcha.nativeElement, options);
 
-        // Get widget ID
-        this.widgetId = this.findWidgetId();
       },
       (error) => {
         console.error('Failed to load hCaptcha script', error);
@@ -97,6 +98,9 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
     );
   }
 
+  ngOnDestroy() {
+    this.captcha$.unsubscribe();
+  }
 
   // ControlValueAccessor implementation
 
@@ -157,21 +161,4 @@ export class NgHcaptchaComponent implements OnInit, ControlValueAccessor {
   private onError(error: any) {
     this.error.emit(error);
   }
-
-  /**
-   * Find the widget ID of the hCaptcha container.
-   */
-  private findWidgetId(): string {
-    const children = this.captcha.nativeElement.children;
-
-    for (let i = 0; i < children.length; i++) {
-      // Found correct children when the hcaptchaWidgetId dataset property is set
-      if (children[i] && children[i].dataset && children[i].dataset.hcaptchaWidgetId) {
-        return children[i].dataset.hcaptchaWidgetId;
-      }
-    }
-
-    return null;
-  }
-
 }
