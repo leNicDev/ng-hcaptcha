@@ -1,14 +1,15 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Inject, Input, NgZone, OnInit, Output, PLATFORM_ID } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Inject, Input, NgZone, OnInit, Output, PLATFORM_ID, OnDestroy } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { Subscription } from 'rxjs';
 import { CAPTCHA_CONFIG, CaptchaConfig } from './ng-hcaptcha-config';
 import { loadHCaptcha } from './hcaptcha-utils';
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 declare const window: any;
 
 @Directive({
   selector: '[ngHcaptchaInvisibleButton]'
 })
-export class NgHcaptchaInvisibleButtonDirective implements OnInit {
+export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
 
   @Input() siteKey: string;
   @Input() languageCode: string;
@@ -19,6 +20,8 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit {
   @Output() click: EventEmitter<any> = new EventEmitter<any>();
 
   private lastClickEvent: any;
+  private captcha$: Subscription;
+  private widgetId: string;
 
   constructor(private elRef: ElementRef,
               @Inject(CAPTCHA_CONFIG) private config: CaptchaConfig,
@@ -37,7 +40,7 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit {
     }
 
     // Load the hCaptcha script
-    loadHCaptcha(this.languageCode).subscribe(
+    this.captcha$ = loadHCaptcha(this.languageCode).subscribe(
       () => {
         // Configure hCaptcha
         const options = {
@@ -49,12 +52,16 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit {
         };
 
         // Render hCaptcha using the defined options
-        window.hcaptcha.render(this.elRef.nativeElement, options);
+        this.widgetId = window.hcaptcha.render(this.elRef.nativeElement, options);
       });
   }
 
+  ngOnDestroy(){
+    this.captcha$.unsubscribe();
+  }
+
   @HostListener('click', ['$event'])
-  onClick(event) {
+  onClick(event: any): boolean {
     if (event.hCaptchaToken) {
       return;
     }
@@ -62,12 +69,12 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit {
     this.lastClickEvent = event;
     event.stopPropagation();
     event.preventDefault();
-    event.cancelBuble = true;
-    event.stopImmediatePropagation();
+    event.cancelBubble = true;
+    //event.stopImmediatePropagation();
 
     // Only execute hCaptcha if platform is browser
     if (isPlatformBrowser(this.platformId)) {
-      window.hcaptcha.execute();
+      window.hcaptcha.execute(this.widgetId);
     }
 
     return false;
@@ -77,7 +84,7 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit {
    * Is called when the verification was successful
    * @param response The verification token
    */
-  private onVerify(response: string) {
+  private onVerify(response: string): void {
     const event = this.lastClickEvent || {};
     event.hCaptchaToken = response;
     this.click.emit(event);
@@ -88,7 +95,7 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit {
    * Is called when the verification has expired
    * @param response The verification response
    */
-  private onExpired(response: any) {
+  private onExpired(response: any): void {
     this.expired.emit(response);
   }
 
@@ -96,7 +103,7 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit {
    * Is called when an error occurs during the verification process
    * @param error The error returned by hCaptcha
    */
-  private onError(error: any) {
+  private onError(error: any): void {
     this.error.emit(error);
   }
 
