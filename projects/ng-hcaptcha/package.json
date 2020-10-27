@@ -1,6 +1,6 @@
 {
   "name": "ng-hcaptcha",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "hCaptcha Component for Angular 7+",
   "keywords": [
     "hcaptcha",
@@ -23,7 +23,8 @@
     "@angular/common": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0",
     "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0",
     "@angular/forms": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0"
-  },
+  }
+,
   "dependencies": {
     "tslib": "^2.0.0"
   }
