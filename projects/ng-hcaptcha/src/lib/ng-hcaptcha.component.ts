@@ -35,8 +35,8 @@ declare const window: any;
 export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAccessor {
 
   @Input() siteKey: string;
-  @Input() theme: string;
-  @Input() size: string;
+  @Input() theme: 'light'|'dark';
+  @Input() size: 'normal' | 'compact';
   @Input() tabIndex: number;
   @Input() languageCode: string;
 
