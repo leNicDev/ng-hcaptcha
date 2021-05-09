@@ -74,28 +74,33 @@ export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAcces
       return;
     }
 
-    // Load the hCaptcha script
     this.captcha$ = loadHCaptcha(this.languageCode).subscribe(
       () => {
-        // Configure hCaptcha
-        const options = {
-          sitekey: (this.siteKey || this.config.siteKey),
-          theme: this.theme,
-          size: this.size,
-          tabindex: this.tabIndex,
-          callback: (res) => { this.zone.run(() => this.onVerify(res)); },
-          'expired-callback': (res) => { this.zone.run(() => this.onExpired(res)); },
-          'error-callback': (err) => { this.zone.run(() => this.onError(err)); }
-        };
+        setTimeout((context) => {
+          // Configure hCaptcha
+          const options = {
+            sitekey: (context.siteKey || context.config.siteKey),
+            theme: context.theme,
+            size: context.size,
+            tabindex: context.tabIndex,
+            callback: (res) => { context.zone.run(() => context.onVerify(res)); },
+            'expired-callback': (res) => { context.zone.run(() => context.onExpired(res)); },
+            'error-callback': (err) => { context.zone.run(() => context.onError(err)); }
+          };
 
-        // Render hCaptcha using the defined options
-        this.widgetId = window.hcaptcha.render(this.captcha.nativeElement, options);
-
+          // Render hCaptcha using the defined options
+          context.widgetId = window.hcaptcha.render(context.captcha.nativeElement, options);
+        }, 50, this);
       },
       (error) => {
         console.error('Failed to load hCaptcha script', error);
       }
     );
+
+    // Load the hCaptcha script
+    setTimeout((context) => {
+      
+    }, 1000, this);
   }
 
   ngOnDestroy() {

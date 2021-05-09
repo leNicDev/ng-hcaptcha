@@ -36,9 +36,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     NgHcaptchaModule.forRoot({
       siteKey: environment.siteKey,
-      languageCode: 'de'
+      languageCode: 'en'
     }),
-    NgHcaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

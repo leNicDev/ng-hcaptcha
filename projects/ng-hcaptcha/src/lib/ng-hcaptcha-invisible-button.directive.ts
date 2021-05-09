@@ -42,17 +42,19 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
     // Load the hCaptcha script
     this.captcha$ = loadHCaptcha(this.languageCode).subscribe(
       () => {
-        // Configure hCaptcha
-        const options = {
-          sitekey: (this.siteKey || this.config.siteKey),
-          size: 'invisible',
-          callback: (res) => { this.zone.run(() => this.onVerify(res)); },
-          'expired-callback': (res) => { this.zone.run(() => this.onExpired(res)); },
-          'error-callback': (err) => { this.zone.run(() => this.onError(err)); }
-        };
+        setTimeout((context) => {
+          // Configure hCaptcha
+          const options = {
+            sitekey: (context.siteKey || context.config.siteKey),
+            size: 'invisible',
+            callback: (res) => { context.zone.run(() => context.onVerify(res)); },
+            'expired-callback': (res) => { context.zone.run(() => context.onExpired(res)); },
+            'error-callback': (err) => { context.zone.run(() => context.onError(err)); }
+          };
 
-        // Render hCaptcha using the defined options
-        this.widgetId = window.hcaptcha.render(this.elRef.nativeElement, options);
+          // Render hCaptcha using the defined options
+          context.widgetId = window.hcaptcha.render(context.elRef.nativeElement, options);
+        }, 50, this);
       });
   }
 
