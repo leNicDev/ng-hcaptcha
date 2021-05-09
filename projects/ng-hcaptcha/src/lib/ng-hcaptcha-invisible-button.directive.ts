@@ -59,6 +59,10 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (isPlatformServer(this.platformId)) {
+      return;
+    }
+
     this.captcha$.unsubscribe();
   }
 

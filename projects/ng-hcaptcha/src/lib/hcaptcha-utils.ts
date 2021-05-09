@@ -9,6 +9,11 @@ declare const window: any;
  */
 export function loadHCaptcha(languageCode?: string): Observable<void> {
   return new Observable<void>((observer: Subscriber<void>) => {
+    // No window object (ssr)
+    if (!window) {
+      return;
+    }
+
     // The hCaptcha script has already been loaded
     if (typeof window.hcaptcha !== 'undefined') {
       observer.next();

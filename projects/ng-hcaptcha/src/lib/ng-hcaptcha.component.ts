@@ -13,7 +13,7 @@ import {
   OnDestroy
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { isPlatformServer } from '@angular/common';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { CAPTCHA_CONFIG, CaptchaConfig } from './ng-hcaptcha-config';
 import { loadHCaptcha } from './hcaptcha-utils';
@@ -116,7 +116,7 @@ export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAcces
     // Reset hCaptcha.
     // We need to check whether window.hcaptcha is defined because
     // writeValue(value: any) can be called before hCaptcha has been intialized.
-    if (!this.value && window.hcaptcha) {
+    if (isPlatformBrowser(this.platformId) && !this.value && window.hcaptcha) {
       window.hcaptcha.reset(this.widgetId);
     }
   }
