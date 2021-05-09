@@ -3,7 +3,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/leNicDev/ng-hcaptcha.svg)](https://GitHub.com/leNicDev/ng-hcaptcha/issues/)&nbsp;
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/leNicDev/ng-hcaptcha.svg)](https://GitHub.com/leNicDev/ng-hcaptcha/pull/)
 
-# ng-hcaptcha - hCaptcha Component for Angular 7+
+# ng-hcaptcha - hCaptcha Component for Angular
 
 ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.com).
 
