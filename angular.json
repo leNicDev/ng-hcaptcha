@@ -25,7 +25,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "README.md"
             ],
             "styles": [
               "src/styles.scss"

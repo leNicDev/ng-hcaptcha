@@ -1,4 +1,3 @@
-[![Build status](https://api.travis-ci.org/leNicDev/ng-hcaptcha.svg?branch=master)](https://travis-ci.org/leNicDev/ng-hcaptcha)&nbsp;
 [![GitHub license](https://img.shields.io/github/license/leNicDev/ng-hcaptcha.svg)](https://github.com/leNicDev/ng-hcaptcha/blob/master/LICENSE)&nbsp;
 [![GitHub issues](https://img.shields.io/github/issues/leNicDev/ng-hcaptcha.svg)](https://GitHub.com/leNicDev/ng-hcaptcha/issues/)&nbsp;
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/leNicDev/ng-hcaptcha.svg)](https://GitHub.com/leNicDev/ng-hcaptcha/pull/)
