@@ -25,7 +25,7 @@ export function loadHCaptcha(languageCode?: string): Observable<void> {
 
     // Set language code
     if (languageCode) {
-      src += `&hl=${languageCode}`;
+      src += "&hl=" + languageCode;
     }
 
     const script = document.createElement('script');
