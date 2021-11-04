@@ -10,6 +10,7 @@ ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.co
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Execute hCaptcha programmatically](#execute-hcaptcha-programmatically)
 - [Bugs? Ideas?](#bugs-ideas)
 - [Support me](#support-me)
 
@@ -83,6 +84,36 @@ onExpired(response: any) {
 
 onError(error: any) {
     // An error occured during the verification process.
+}
+```
+
+## Execute hCaptcha programmatically
+
+The hCaptcha verification process can also be executed programmatically:
+```ts
+@Component({
+  selector: 'hc-programmatically',
+  templateUrl: './programmatically.component.html',
+  styleUrls: ['./programmatically.component.scss']
+})
+export class ProgrammaticallyComponent {
+
+  constructor(private hcaptchaService: NgHcaptchaService) { }
+
+  verify() {
+    this.hcaptchaService.verify().subscribe(
+      (result) => {
+        console.log('SUCCESS', result);
+      },
+      (err) => {
+        console.log('FAILED', err);
+      },
+      () => {
+        console.log('COMPLETE');
+      }
+    );
+  }
+
 }
 ```
 
