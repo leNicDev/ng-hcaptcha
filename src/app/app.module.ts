@@ -8,12 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InvisibleComponent } from './invisible/invisible.component';
 import { FormComponent } from './form/form.component';
 import { RouterModule } from '@angular/router';
+import { ProgrammaticallyComponent } from './programmatically/programmatically.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvisibleComponent,
-    FormComponent
+    FormComponent,
+    ProgrammaticallyComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,11 @@ import { RouterModule } from '@angular/router';
       {
         path: 'invisible',
         component: InvisibleComponent
-      }
+      },
+      {
+        path: 'programmatically',
+        component: ProgrammaticallyComponent
+      },
     ]),
     FormsModule,
     ReactiveFormsModule,
