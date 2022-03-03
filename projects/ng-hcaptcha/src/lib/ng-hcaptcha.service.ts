@@ -16,10 +16,10 @@ export class NgHcaptchaService {
     verify(): Observable<any> {
         return new Observable((subscriber: Subscriber<any>) => {
             loadHCaptcha(this.captchaConfig.languageCode).subscribe(() => {
-                setTimeout((context) => {    
+                setTimeout((context) => {
                     // Create hCaptcha element
                     if (!this.hCaptchaElement) {
-                        this.hCaptchaElement = document.createElement('div')
+                        this.hCaptchaElement = document.createElement('div');
                         document.body.appendChild(this.hCaptchaElement);
                     }
 

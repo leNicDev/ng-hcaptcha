@@ -96,11 +96,6 @@ export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAcces
         console.error('Failed to load hCaptcha script', error);
       }
     );
-
-    // Load the hCaptcha script
-    setTimeout((context) => {
-      
-    }, 1000, this);
   }
 
   ngOnDestroy() {
@@ -127,6 +122,10 @@ export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAcces
 
   registerOnTouched(fn: any) {
     this.onTouched = fn;
+  }
+
+  reset() {
+    window.hcaptcha.reset(this.widgetId);
   }
 
   get value() {

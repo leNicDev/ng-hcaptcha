@@ -86,6 +86,10 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
     return false;
   }
 
+  reset() {
+    window.hcaptcha.reset(this.widgetId);
+  }
+
   /**
    * Is called when the verification was successful
    * @param response The verification token
