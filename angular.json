@@ -145,6 +145,5 @@
         }
       }
     }
-  },
-  "defaultProject": "ng-hcaptcha-app"
+  }
 }
