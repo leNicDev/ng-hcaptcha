@@ -128,13 +128,13 @@
           "options": {
             "tsConfig": "projects/ng-hcaptcha/tsconfig.lib.json",
             "project": "projects/ng-hcaptcha/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/ng-hcaptcha/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
