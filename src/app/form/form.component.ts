@@ -23,7 +23,10 @@ export class FormComponent {
       }),
       password: new FormControl<string>("", { nonNullable: true }),
       confirmPassword: new FormControl<string>("", { nonNullable: true }),
-      captcha: new FormControl<string>("", { nonNullable: true }),
+      captcha: new FormControl<string>("", {
+        nonNullable: true,
+        validators: Validators.required,
+      }),
     });
   }
 
