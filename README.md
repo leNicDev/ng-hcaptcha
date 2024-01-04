@@ -8,11 +8,16 @@ ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.co
 
 ## Table of Contents
 
+- [Supported Angular versions](#supported-angular-versions)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Execute hCaptcha programmatically](#execute-hcaptcha-programmatically)
 - [Bugs? Ideas?](#bugs-ideas)
 - [Support me](#support-me)
+
+## Supported Angular versions
+
+The latest version of `ng-hcaptcha` currently supports Angular v9 to v17.
 
 ## Installation
 
