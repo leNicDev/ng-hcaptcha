@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable, NgZone } from "@angular/core";
 import { Observable, Subscriber } from "rxjs";
 import { loadHCaptcha } from "./hcaptcha-utils";
 import { CaptchaConfig, CAPTCHA_CONFIG } from "./ng-hcaptcha-config";
@@ -11,7 +11,9 @@ export class NgHcaptchaService {
     private hCaptchaElement: HTMLElement;
     private hCaptchaWidgetId: string;
 
-    constructor(@Inject(CAPTCHA_CONFIG) private captchaConfig: CaptchaConfig) { }
+    constructor(
+        @Inject(CAPTCHA_CONFIG) private captchaConfig: CaptchaConfig,
+        private zone: NgZone) { }
 
     verify(): Observable<any> {
         return new Observable((subscriber: Subscriber<any>) => {
@@ -30,17 +32,23 @@ export class NgHcaptchaService {
                             sitekey: this.captchaConfig.siteKey,
                             size: 'invisible',
                             callback: (res) => {
-                                subscriber.next(res);
-                                subscriber.complete();
-                                this.resetHcaptcha();
+                                this.zone.run(() => {
+                                    subscriber.next(res);
+                                    subscriber.complete();
+                                    this.resetHcaptcha();
+                                });
                             },
                             'expired-callback': (res) => {
-                                subscriber.error(res);
-                                this.resetHcaptcha();
+                                this.zone.run(() => {
+                                    subscriber.error(res);
+                                    this.resetHcaptcha();
+                                });
                             },
                             'error-callback': (err) => {
-                                subscriber.error(err);
-                                this.resetHcaptcha();
+                                this.zone.run(() => {
+                                    subscriber.error(err);
+                                    this.resetHcaptcha();
+                                });
                             },
                         };
                         this.hCaptchaWidgetId = window.hcaptcha.render(this.hCaptchaElement, options);
