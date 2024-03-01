@@ -57,7 +57,7 @@ export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAcces
   constructor(
     @Inject(CAPTCHA_CONFIG) private config: CaptchaConfig,
     private zone: NgZone,
-    @Inject(PLATFORM_ID) private platformId
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
 
@@ -132,7 +132,7 @@ export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAcces
     window.hcaptcha.reset(this.widgetId);
   }
 
-  get value() {
+  get value(): string {
     return this._value;
   }
 

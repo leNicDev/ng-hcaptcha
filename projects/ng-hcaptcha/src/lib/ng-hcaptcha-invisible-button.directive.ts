@@ -26,7 +26,7 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
   constructor(private elRef: ElementRef,
               @Inject(CAPTCHA_CONFIG) private config: CaptchaConfig,
               private zone: NgZone,
-              @Inject(PLATFORM_ID) private platformId) { }
+              @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit() {
     // Use language code from module config when input parameter is not set

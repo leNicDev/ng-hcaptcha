@@ -14,4 +14,4 @@ export interface CaptchaConfig {
     languageCode?: string;
 }
 
-export const CAPTCHA_CONFIG = new InjectionToken<CaptchaConfig>('CAPTCHA_CONFIG');
+export const CAPTCHA_CONFIG: InjectionToken<CaptchaConfig> = new InjectionToken<CaptchaConfig>('CAPTCHA_CONFIG');

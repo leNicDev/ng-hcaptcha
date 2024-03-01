@@ -1,5 +1,5 @@
 {
     "name": "@lenicdev/ng-hcaptcha",
     "version": "2.3.1",
-    "exports": "./projects/ng-hcaptcha/public_api.ts"
+    "exports": "./projects/ng-hcaptcha/src/public_api.ts"
 }
