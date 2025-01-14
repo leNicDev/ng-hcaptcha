@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'hc-invisible',
-  templateUrl: './invisible.component.html',
-  styleUrls: ['./invisible.component.scss']
+    selector: 'hc-invisible',
+    templateUrl: './invisible.component.html',
+    styleUrls: ['./invisible.component.scss'],
+    standalone: false
 })
 export class InvisibleComponent implements OnInit {
 
