@@ -7,7 +7,8 @@ import { loadHCaptcha } from './hcaptcha-utils';
 declare const window: any;
 
 @Directive({
-  selector: '[ngHcaptchaInvisibleButton]'
+    selector: '[ngHcaptchaInvisibleButton]',
+    standalone: false
 })
 export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
 

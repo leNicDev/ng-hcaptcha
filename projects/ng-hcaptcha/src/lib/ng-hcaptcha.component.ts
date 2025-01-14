@@ -21,16 +21,17 @@ import { loadHCaptcha } from './hcaptcha-utils';
 declare const window: any;
 
 @Component({
-  selector: 'ng-hcaptcha',
-  template: '<div #captcha class="h-captcha"></div>',
-  styles: [],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NgHcaptchaComponent),
-      multi: true
-    }
-  ]
+    selector: 'ng-hcaptcha',
+    template: '<div #captcha class="h-captcha"></div>',
+    styles: [],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => NgHcaptchaComponent),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAccessor {
 
