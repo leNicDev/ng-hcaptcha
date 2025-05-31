@@ -17,7 +17,7 @@ ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.co
 
 ## Supported Angular versions
 
-The latest version of `ng-hcaptcha` currently supports Angular v9 to v17.
+The latest version of `ng-hcaptcha` currently supports Angular v9 to v20.
 
 ## Installation
 
@@ -33,7 +33,8 @@ yarn add ng-hcaptcha
 
 > You can use the tag 'next' to get the latest beta version.
 
-### Step 2 - Import  the NgHcaptchaModule
+### Step 2 - Import the NgHcaptchaModule
+
 ```ts
 import { NgHcaptchaModule } from 'ng-hcaptcha';
 
@@ -56,27 +57,23 @@ import { NgHcaptchaModule } from 'ng-hcaptcha';
 ## Usage
 
 Template:
+
 ```html
 <!-- Regular usage -->
-<ng-hcaptcha (verify)="onVerify($event)"
-              (expired)="onExpired($event)"
-              (error)="onError($event)">
-</ng-hcaptcha>
+<ng-hcaptcha (verify)="onVerify($event)" (expired)="onExpired($event)" (error)="onError($event)"> </ng-hcaptcha>
 
 <!-- Usage in forms -->
 <!-- The value of the form control will be the verification token -->
 <form [formGroup]="formGroup" (submit)="onSubmit()">
-    <ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
+  <ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
 </form>
 
 <!-- Invisible captcha -->
-<button ngHcaptchaInvisibleButton
-        (verify)="onVerify($event)"
-        (expired)="onExpired($event)"
-        (error)="onError($event)">Click me</button>
+<button ngHcaptchaInvisibleButton (verify)="onVerify($event)" (expired)="onExpired($event)" (error)="onError($event)">Click me</button>
 ```
 
 TS:
+
 ```ts
 onVerify(token: string) {
     // The verification process was successful.
@@ -95,34 +92,34 @@ onError(error: any) {
 ## Execute hCaptcha programmatically
 
 The hCaptcha verification process can also be executed programmatically:
+
 ```ts
 @Component({
-  selector: 'hc-programmatically',
-  templateUrl: './programmatically.component.html',
-  styleUrls: ['./programmatically.component.scss']
+  selector: "hc-programmatically",
+  templateUrl: "./programmatically.component.html",
+  styleUrls: ["./programmatically.component.scss"],
 })
 export class ProgrammaticallyComponent {
-
-  constructor(private hcaptchaService: NgHcaptchaService) { }
+  constructor(private hcaptchaService: NgHcaptchaService) {}
 
   verify() {
     this.hcaptchaService.verify().subscribe(
       (result) => {
-        console.log('SUCCESS', result);
+        console.log("SUCCESS", result);
       },
       (err) => {
-        console.log('FAILED', err);
+        console.log("FAILED", err);
       },
       () => {
-        console.log('COMPLETE');
+        console.log("COMPLETE");
       }
     );
   }
-
 }
 ```
 
 ## Properties
+
 The properties below exist for all captcha components.
 
 `siteKey` Allows you to set the site key per captcha instance.
