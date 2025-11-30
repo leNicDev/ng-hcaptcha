@@ -20,8 +20,7 @@ ng-hcaptcha provides an easy to use component for [hCaptcha](https://hcaptcha.co
 | Angular version | ng-hcaptcha version |
 |-----------------|---------------------|
 | 14-21           | latest              |
-| 9-13            | 2.6.0               |
-| < 9             | 1.3.1               |
+| < 14             | 1.3.1              |
 
 ## Installation
 
@@ -137,5 +136,6 @@ If you found a bug or something you don't like, feel free to [open an issue](htt
 
 If you would like to support me for free, just create your hCaptcha account using my referral link :relaxed:
 [https://hCaptcha.com/?r=4afcb2d42338](https://hCaptcha.com/?r=4afcb2d42338)
+
 
 
