@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "importHelpers": true,
     "esModuleInterop": true,
     "outDir": "./dist/out-tsc",
@@ -16,10 +15,10 @@
     ],
     "paths": {
       "ng-hcaptcha": [
-        "dist/ng-hcaptcha"
+        "./dist/ng-hcaptcha"
       ],
       "ng-hcaptcha/*": [
-        "dist/ng-hcaptcha/*"
+        "./dist/ng-hcaptcha/*"
       ]
     },
     "useDefineForClassFields": false

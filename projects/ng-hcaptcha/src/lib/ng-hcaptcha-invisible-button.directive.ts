@@ -12,8 +12,8 @@ declare const window: any;
 })
 export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
 
-  @Input() siteKey: string;
-  @Input() languageCode: string;
+  @Input() siteKey?: string;
+  @Input() languageCode?: string;
 
   @Output() verify: EventEmitter<string> = new EventEmitter<string>();
   @Output() expired: EventEmitter<any> = new EventEmitter<any>();
@@ -21,8 +21,8 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
   @Output() click: EventEmitter<any> = new EventEmitter<any>();
 
   private lastClickEvent: any;
-  private captcha$: Subscription;
-  private widgetId: string;
+  private captcha$?: Subscription;
+  private widgetId?: string;
 
   constructor(private elRef: ElementRef,
               @Inject(CAPTCHA_CONFIG) private config: CaptchaConfig,
@@ -43,14 +43,14 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
     // Load the hCaptcha script
     this.captcha$ = loadHCaptcha(this.languageCode).subscribe(
       () => {
-        setTimeout((context) => {
+        setTimeout((context: any) => {
           // Configure hCaptcha
           const options = {
             sitekey: (context.siteKey || context.config.siteKey),
             size: 'invisible',
-            callback: (res) => { context.zone.run(() => context.onVerify(res)); },
-            'expired-callback': (res) => { context.zone.run(() => context.onExpired(res)); },
-            'error-callback': (err) => { context.zone.run(() => context.onError(err)); }
+            callback: (res: any) => { context.zone.run(() => context.onVerify(res)); },
+            'expired-callback': (res: any) => { context.zone.run(() => context.onExpired(res)); },
+            'error-callback': (err: any) => { context.zone.run(() => context.onError(err)); }
           };
 
           // Render hCaptcha using the defined options
@@ -64,13 +64,13 @@ export class NgHcaptchaInvisibleButtonDirective implements OnInit, OnDestroy {
       return;
     }
 
-    this.captcha$.unsubscribe();
+    this.captcha$?.unsubscribe();
   }
 
   @HostListener('click', ['$event'])
   onClick(event: any): boolean {
     if (event.hCaptchaToken) {
-      return;
+      return false;
     }
 
     this.lastClickEvent = event;

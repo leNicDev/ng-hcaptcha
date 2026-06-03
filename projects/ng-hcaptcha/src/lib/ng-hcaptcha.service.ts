@@ -8,8 +8,8 @@ declare const window: any;
 @Injectable()
 export class NgHcaptchaService {
 
-    private hCaptchaElement: HTMLElement;
-    private hCaptchaWidgetId: string;
+    private hCaptchaElement: HTMLElement | null = null;
+    private hCaptchaWidgetId: string | null = null;
 
     constructor(
         @Inject(CAPTCHA_CONFIG) private captchaConfig: CaptchaConfig,
@@ -18,7 +18,7 @@ export class NgHcaptchaService {
     verify(): Observable<any> {
         return new Observable((subscriber: Subscriber<any>) => {
             loadHCaptcha(this.captchaConfig.languageCode).subscribe(() => {
-                setTimeout((context) => {
+                setTimeout((context: any) => {
                     // Create hCaptcha element
                     if (!this.hCaptchaElement) {
                         this.hCaptchaElement = document.createElement('div');
@@ -28,23 +28,23 @@ export class NgHcaptchaService {
                     // Render hCaptcha using the defined options
                     if (!this.hCaptchaWidgetId) {
                         // Configure hCaptcha
-                        const options = {
-                            sitekey: this.captchaConfig.siteKey,
-                            size: 'invisible',
-                            callback: (res) => {
-                                this.zone.run(() => {
-                                    subscriber.next(res);
-                                    subscriber.complete();
-                                    this.resetHcaptcha();
-                                });
-                            },
-                            'expired-callback': (res) => {
-                                this.zone.run(() => {
-                                    subscriber.error(res);
-                                    this.resetHcaptcha();
-                                });
-                            },
-                            'error-callback': (err) => {
+                      const options = {
+                        sitekey: this.captchaConfig.siteKey,
+                        size: 'invisible',
+                        callback: (res: any) => {
+                          this.zone.run(() => {
+                            subscriber.next(res);
+                            subscriber.complete();
+                            this.resetHcaptcha();
+                          });
+                        },
+                        'expired-callback': (res: any) => {
+                          this.zone.run(() => {
+                            subscriber.error(res);
+                            this.resetHcaptcha();
+                          });
+                        },
+                        'error-callback': (err: any) => {
                                 this.zone.run(() => {
                                     subscriber.error(err);
                                     this.resetHcaptcha();

@@ -10,7 +10,8 @@ import {
   EventEmitter,
   forwardRef,
   PLATFORM_ID,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
@@ -31,25 +32,26 @@ declare const window: any;
             multi: true
         }
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAccessor {
 
-  @Input() siteKey: string;
-  @Input() theme: string;
-  @Input() size: string;
-  @Input() tabIndex: number;
-  @Input() languageCode: string;
+  @Input() siteKey?: string;
+  @Input() theme?: string;
+  @Input() size?: string;
+  @Input() tabIndex?: number;
+  @Input() languageCode?: string;
 
-  @ViewChild('captcha', { static: true }) captcha: ElementRef;
+  @ViewChild('captcha', { static: true }) captcha?: ElementRef;
 
   @Output() verify: EventEmitter<string> = new EventEmitter<string>();
   @Output() expired: EventEmitter<any> = new EventEmitter<any>();
   @Output() error: EventEmitter<any> = new EventEmitter<any>();
 
-  private _value: string;
-  private widgetId: string;
-  private captcha$: Subscription;
+  private _value?: string;
+  private widgetId?: string;
+  private captcha$?: Subscription;
 
   onChange: any = () => {};
   onTouched: any = () => {};
@@ -67,7 +69,7 @@ export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAcces
   ngOnInit() {
     // Use language code from module config when input parameter is not set
     if (!this.languageCode) {
-      this.languageCode = this.config.languageCode;
+      this.languageCode = this.config.languageCode || 'en';
     }
 
     // Do not load hCaptcha if platform is server
@@ -77,16 +79,16 @@ export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAcces
 
     this.captcha$ = loadHCaptcha(this.languageCode).subscribe(
       () => {
-        setTimeout((context) => {
+        setTimeout((context: any) => {
           // Configure hCaptcha
           const options = {
             sitekey: (context.siteKey || context.config.siteKey),
             theme: context.theme,
             size: context.size,
             tabindex: context.tabIndex,
-            callback: (res) => { context.zone.run(() => context.onVerify(res)); },
-            'expired-callback': (res) => { context.zone.run(() => context.onExpired(res)); },
-            'error-callback': (err) => { context.zone.run(() => context.onError(err)); }
+            callback: (res: any) => { context.zone.run(() => context.onVerify(res)); },
+            'expired-callback': (res: any) => { context.zone.run(() => context.onExpired(res)); },
+            'error-callback': (err: any) => { context.zone.run(() => context.onError(err)); }
           };
 
           // Render hCaptcha using the defined options
@@ -104,7 +106,7 @@ export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAcces
       return;
     }
 
-    this.captcha$.unsubscribe();
+    this.captcha$?.unsubscribe();
   }
 
   // ControlValueAccessor implementation
@@ -133,7 +135,7 @@ export class NgHcaptchaComponent implements OnInit, OnDestroy, ControlValueAcces
     window.hcaptcha.reset(this.widgetId);
   }
 
-  get value(): string {
+  get value(): string | undefined {
     return this._value;
   }
 
